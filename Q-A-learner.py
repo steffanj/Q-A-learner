@@ -8,64 +8,45 @@ def main():
     '''
     This script will ask you to give the correct translation of a letter/word/
     sentence or a correct answer to a question. It was initially created to 
-    learn the Korean alphabet - the Jamo characters. In a future version, 
-    Questions and Answers may be imported from an external file, but for now 
-    they have to be defined inside this script. Questions can be scrambled 
-    before rehearsal, and the user can specify if he/she wants to start over 
-    if a mistaske is made. The user's terminal should support Unicode 
-    characters.
+    learn the Korean alphabet - the Jamo characters. Questions and Answers are
+    imported from a csv file which has to have the following structure:
+        question1, answer1
+        # This is a comment: lines in your csv file starting with a '#' are not 
+        # considered to be questions or answers and are therefore ignored
+        question2, answer2
+        ...
+    Questions can be scrambled before rehearsal, and the user can specify if 
+    he/she wants to start over if a mistaske is made. If unicode characters are
+    not shown correctly, please be aware that the csv file is read using utf-8 
+    encoding. If utf-8 characters are not shown correctly, please check if your
+    terminal supports them (Windows' CMD terminal does not by default).
     
     To do:
-        * Make it possible to load Questions and Answers from an external file
         * Make it possible to have multiple valid Answers to a Question; the 
           program could ask for all correct Answers
         * Create statistics to keep account of Questions that appear to be 
           harder/easier to answer
-        * Check if the Unicode characters are correctly displayed
         * Make a GUI/web interface 
     '''
-    
-    # Questions and Answers are defined here, inside a tuple. Each Q/A couple 
-    # is defined as a tuple in the format ('Question', 'Answer'). 
-    objects = (# The 51 Korean Jamo characters defined as non-obsolete on 
-              # https://en.wikipedia.org/wiki/Hangul#Letters
-              # Consonants
-              ('\u1100','g'), ('\u1102', 'n'), ('\u1103', 'd'), 
-              ('\u1105 (1)', 'l'), ('\u1105 (2)', 'r'), ('\u1106', 'm'), 
-              ('\u1107', 'b'), ('\u1109', 's'), ('\u110B when used as the '
-              'first character in a syllable', 'null'), ('\u110B when used as '
-              'the last character in a syllable', 'ng'), ('\u110C', 'j'), 
-              ('\u110E', 'ch'), ('\u110F', 'k'), ('\u1110', 't'), 
-              ('\u1111', 'p'), ('\u1112', 'h'),
-              # Vowels
-              ('\u1161', 'a'), ('\u1165', 'eo'), ('\u1169', 'o'), 
-              ('\u116E', 'u'), ('\u1173', 'eu'), ('\u1175', 'i'),
-              # Iotized vowels (with a 'y')
-              ('\u1163', 'ya'), ('\u1167', 'yeo'), ('\u116D', 'yo'), 
-              ('\u1172', 'yu'),
-              # Double consonants
-              ('\u1101', 'kk'), ('\u1104', 'tt'), ('\u1108', 'pp'), 
-              ('\u11BB', 'ss'), ('\u110D', 'jj'), 
-              # Consonant clusters
-              ('\u3133', 'gs'), ('\u3135', 'nj'), ('\u3136', 'nh'), 
-              ('\u313A', 'lg'), ('\u313B', 'lm'), ('\u313C', 'lb'), 
-              ('\u313D', 'ls'), ('\u313E', 'lt'), ('\u313F', 'lp'), 
-              ('\u3140', 'lh'), ('\u3144', 'bs'), 
-              # (Iotized) diphthongs
-              ('\u3150', 'ae'), ('\u3152', 'yae'), ('\u3154', 'e'), 
-              ('\u3156', 'ye'), ('\u3162', 'ui'), 
-              # Vowels and diphthongs with a w
-              ('\u3158', 'wa'), ('\u3159', 'wae'), ('\u315A', 'oe'), 
-              ('\u315D', 'wo'), ('\u315E', 'we'), ('\u315F', 'wi'), 
-              )
-    
+
+    fname = input('Enter name of the csv file containing the Questions and Answers: ')
+    fh = open(fname, encoding='utf-8')
+    objects = []
+    try:
+        for line in fh:
+            if not line[0] == '#':
+                objects.append([x.strip() for x in line.split(',')])
+        fh.close()        
+    except ValueError:
+        print('Something went wrong while reading the csv file')
+   
     # Ask if the user wants to answer the Questions in a randomized order or 
     # not
     randFlag = input('Would you like to scramble the Questions? (y/n): ')
    
     # Randomize the Questions if requested
     if randFlag == 'y':
-        objects = list(objects)
+#        objects = list(objects)
         random.shuffle(objects)
         print('Questions are scrambled')
     elif randFlag == 'n':

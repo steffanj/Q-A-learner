@@ -1,0 +1,62 @@
+# The 51 Korean Jamo characters defined as non-obsolete on 
+# https://en.wikipedia.org/wiki/Hangul#Letters
+# Consonants
+ᄀ, g
+ᄂ, n
+ᄃ, d
+ᄅ (1), l
+ᄅ (2), r
+ᄆ, m
+ᄇ, b
+ᄉ, s
+ᄋ when used as the first character in a syllable, null
+ᄋ when used as the last character in a syllable, ng
+ᄌ, j
+ᄎ, ch
+ᄏ, k
+ᄐ, t
+ᄑ, p
+ᄒ, h
+# Vowels
+ᅡ, a
+ᅥ, eo
+ᅩ, o
+ᅮ, u
+ᅳ, eu
+ᅵ, i
+# Iotized vowels (with a y)
+ᅣ, ya
+ᅧ, yeo
+ᅭ, yo
+ᅲ, yu
+# Double consonants
+ᄁ, kk
+ᄄ, tt
+ᄈ, pp
+ᆻ, ss
+ᄍ, jj
+# Consonant clusters
+ㄳ, gs
+ㄵ, nj
+ㄶ, nh
+ㄺ, lg
+ㄻ, lm
+ㄼ, lb
+ㄽ, ls
+ㄾ, lt
+ㄿ, lp
+ㅀ, lh
+ㅄ, bs
+# (Iotized) diphthongs
+ㅐ, ae
+ㅒ, yae
+ㅔ, e)
+ㅖ, ye
+ㅢ, ui
+# Vowels and diphthongs with a w
+ㅘ, wa
+ㅙ, wae
+ㅚ, oe 
+ㅝ, wo
+ㅞ, we
+ㅟ, wi
