@@ -3,11 +3,13 @@ Python script to practise giving correct translations or correct answers to ques
 
 ## Description
 This script will ask you to give the correct translation of a letter/word/ sentence or a correct answer to a question. It was initially created to learn the Korean alphabet - the Jamo characters. Questions and Answers are imported from a csv file which has to have the following structure:
-	question1, answer1
-	# This is a comment: lines in your csv file starting with a '#' are not 
-	# considered to be questions or answers and are therefore ignored
-	question2, answer2
-	...
+~~~~
+question1, answer1
+# This is a comment: lines in your csv file starting with a '#' are not 
+# considered to be questions or answers and are therefore ignored
+question2, answer2
+...
+~~~~
 Questions can be scrambled before rehearsal, and the user can specify if  he/she wants to start over if a mistaske is made. If unicode characters are not shown correctly, please be aware that the csv file is read using utf-8 encoding. If utf-8 characters are not shown correctly, please check if your terminal supports them (Windows' CMD terminal does not by default).
 
 ## How to use
